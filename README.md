@@ -1,7 +1,16 @@
+> **Why this Skeleton?**
+> In traditional embedded development, is often  a **"Valley of Death"** between hardware design and software implementation. Hardware engineers provide datasheets and LTSpice models, but software engineers write C-code based on idealized assumptions. And by result the system fails due to jitter, noise or thermal drift.
+
+>This **skeleton** is designed to bridge that gap and provides a structured workflow for modeling, simulation, and validation. Your can use it as a template. This is a version 0.1.0 and will be improved in the future.
+
+
 # [Project Title, Model, Version or Iteration]
 
-**Methodology & Approach:** Brief description of the project. Overall goals, scope. Specific problems.
-**Setup:** Describing the hardware and software environment.
+1. **Methodology & Approach:**
+- Brief description of the project. 
+- Overall goals, scope. Specific problems.
+2. **Setup:** 
+- Describing the hardware and software environment.
 
 ## Iteration Roadmap and publishing plan
 
