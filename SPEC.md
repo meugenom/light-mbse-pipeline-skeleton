@@ -1,31 +1,30 @@
+# Specifications for Potentiometer:
+> AUTO-GENERATED from `/octave/main.m` on 2026-04-23 14:18:34
 
-# Hardware Specifications & Physical Constraints
+## Components:
+1. **Potentiometer:**
+## 1. Potentiometer Specifications
 
-## 1. System Overview
-- Briefly about the physical system being modeled (RC circuit, sensor, etc.)
-- Datasheet references.
-- Component values and tolerances.
-- ...
+These values represent the physical and electrical properties of the potentiometer.
 
-## 2. Traceable Hardware Constraints
-All downstream math and C-code must satisfy these physical realities:
+| Constraint Name | Parameter Name | Parameter Value | Parameter Unit |
+|---|---|---|---|
+|REQ-PHY-001|V_REF|5.0000|V|
+|REQ-PHY-002|ANGLE_MAX|355.0000|deg|
+|REQ-PHY-003|ADC_RESOLUTION|4096.0000|counts|
+|REQ-ALG-001|SENSOR_TAB_SIZE|101.0000|N/A|
+## 4. Test Report from Data
 
-- `[REQ-PHY-001]` Component Tolerance.
-- `[REQ-PHY-002]` Time Constants.
-- `[REQ-PHY-003]` Limits.
-- ...
-
-## 3. Physical Behavior (Analog Simulation)
-- Transient/steady-state analysis
-- Schematics 
-- Test Conditions
-- Expected Output
-- ...
-
-## 4. Hardware vs. Simulation Gap
-- Discrepancies between the physical system and the LTSpice simulation
-- Justification for using LTSpice as a modeling tool
-- ...
-
----
-*Document Version: v.0.1.0 | Part of MBSE-PIPELINE-SKELETON*
+| POINT_ID | RAW_ADC_VALUE | DESCRIPTION |
+|---|---|---|
+|0|0|0% turn|
+|1|415|10% turn|
+|2|812|20% turn|
+|3|1235|30% turn|
+|4|1630|40% turn|
+|5|2048|50% turn|
+|6|2465|60% turn|
+|7|2860|70% turn|
+|8|3285|80% turn|
+|9|3680|90% turn|
+|10|4095|100% turn|

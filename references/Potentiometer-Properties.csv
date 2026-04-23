@@ -1,0 +1,5 @@
+Constraint name; Parameter name; Parameter value; Parameter unit
+REQ-PHY-001; V_REF; 5.0; V
+REQ-PHY-002; ANGLE_MAX; 355; deg
+REQ-PHY-003; ADC_RESOLUTION; 4096; counts
+REQ-ALG-001; SENSOR_TAB_SIZE; 101; N/A

@@ -11,4 +11,4 @@
 | Frequency | f | Hertz (Hz) |
 
 ---
-*Document Version: v.0.1.0 | Part of MBSE-PIPELINE-SKELETON*
+*Document Version: v.0.3.0 | Part of LIGHT-MBSE-PIPELINE-SKELETON*

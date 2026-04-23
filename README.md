@@ -4,53 +4,72 @@
 >This **skeleton** is designed to bridge that gap and provides a structured workflow for modeling, simulation, and validation. Your can use it as a template. This is a version 0.1.0 and will be improved in the future.
 
 
-# [Project Title, Model, Version or Iteration]
+# LIGHT-MBSE-PIPELINE-SKELETON 
+
+> For example to pipeline the modeling and validation of a Potentiometer.
 
 1. **Methodology & Approach:**
-- Brief description of the project. 
-- Overall goals, scope. Specific problems.
+- LIGHT-MBSE-PIPELINE-SKELETON is designed to be a roadmap for modeling and valisating a some component, for example a temperature sensor.
 2. **Setup:** 
-- Describing the hardware and software environment.
+- Datasheets Potentiometer `references/Potentiometer-Properties.csv` and `references/Potentiometer-Data.csv`.
 
 ## Iteration Roadmap and publishing plan
 
 | Version | Status | Pipeline Engine | Focus |
 | ------- | ------ | --------------- | ----- |
-| Research v.1.0 | In Progress | SKELETON v.0.1.0 | MBSE-PIPELINE-SKELETON  |
+| Research | Closed | SKELETON v.0.1.0 | MBSE-PIPELINE-SKELETON description |
+| Base Version | Closed | SKELETON v.0.2.0 | MBSE-PIPELINE-SKELETON  worked example |
+| Extensions | Planned | SKELETON v.0.3.0 | MBSE-PIPELINE-SKELETON  extensions |
 
-
-> v.1.0 will be published as on [web link](https:org.org/) and shared on [GitHub](https://github.com/)
 
 ## Table of Contents
 
-- [Iteration Roadmap](#iteration-roadmap-and-publishing-plan)
+- [Iteration Roadmap](#iteration-roadmap)
 - [Table of Contents](#table-of-contents)
 - [Motivation](#motivation)
 - [Environment & Toolchain (Reproducibility)](#environment--toolchain-reproducibility)
 - [Project Documentation](#project-documentation)
 - [Project Directory Structure](#project-directory-structure)
-- [LTSpice Workflow and Restrictions](#ltspice-workflow-and-restrictions)
-- [Octave Workflow and Restrictions](#octave-workflow-and-restrictions)
-- [Code Workflow and Restrictions](#code-workflow-and-restrictions)
-- [Renode Validation Workflow and Restrictions](#renode-validation-workflow-and-restrictions)
-- [Building & Testing](#building--testing)
-- [Validation Workflow](#validation-workflow-preparing-results-describing-the-results)
+- [LTSpice Workflow](#ltspice-workflow)
+- [Octave Workflow](#octave-workflow)
+- [Code Workflow](#code-workflow)
+- [Renode Workflow](#renode-workflow)
+- [Build & Test](#build--test)
+- [Validation Workflow, Results](#validation-workflow-results)
+- [Known Problems and Limitations](#known-problems-and-limitations)
 - [References](#references)
 - [License](#license)
 
 ## Motivation
 
-Motivation of this project. Problem statement.
+I built a C++ motor model from stand test data. The model works — in the hover-cruise range (20–60% throttle) average error is 5.5% by thrust, 3.8% by current. But I had no way to reproduce the result from scratch in a reasonable time. If I lost intermediate files — no way to know where anything came from. If I changed the motor — everything needed to be redone manually.
+The idea was simple: every artifact should be automatically generated from a single source of truth.
+So I redesigned the structure and implemented it as a `LIGHT-MBSE-PIPELINE-SKELETON` - a lightweight, reproducible pipeline for embedded modeling. It's not a full toolchain, not a code, only text, but structured as workflow. The idea is to have some roadmap to automate the entire process from raw data to validated model, ensuring that every artifact is traceable and reproducible.
+
 
 ## Environment & Toolchain (Reproducibility)
 
+**Used System:** macOS Tahoe 26.4.1 on Apple Silicon
+Scripts and tests in this project can be reproduced with the following tools:
+
 | Tool | Version | Purpose |
 | ------ | --------- | --------- |
-| **LTSpice** | [e.g., 17.1.x] | Analog circuit transient simulation |
-| **GNU Octave** | [e.g., 8.4.0] | Mathematical modeling and LUT generation |
-| **GCC ARM Embedded** | [e.g., 13.2.rel1] | Bare-metal target compilation (`-O2` optimization) |
-| **Renode** | [e.g., 1.15.0] | Instruction-accurate hardware emulation |
-| **CMake** | [e.g., 3.25.0] | Build system management |
+| **GNU Octave** | 11.1.0 | Mathematical modeling, generation LUT, Reports|
+| **GCC Clang** | 21.0.0 | Runtime model implementation |
+| **GCC arm-none-eabi-gcc** | 15.2.rel1 | Bare-metal target compilation|
+| **Renode** | 1.16.1.16858 | Instruction-accurate hardware emulation |
+| **CMake** | 4.3.1 | Build system management |
+| **Bash** | 5.3.9(1) | Scripting and automation |
+
+## Project Documentation
+
+| File | Description |
+|------|-------------|
+| [FULL SPECIFICATION](./SPEC.md) | Component specifications, raw stand test data |
+| [CALCULATION DETAILS](./CALC.md) | Model derivation: math, pipeline, voltage scaling |
+| [VALIDATION REPORT](./VALIDATION.md) | Validation results and performance metrics |
+| [METRICS.md](./METRICS.md) | Units and measurement standards |
+| [README.md](./README.md) | Project overview, workflow, and documentation structure |
 
 ## Pipeline Overview
 
@@ -96,8 +115,7 @@ Motivation of this project. Problem statement.
 │1. Compare with Datasheet and Stand Test │
 │2. Analyze Deviations and Errors         │
 │3. Prepare Validation Report             │
-│4. Make analysis for TinyML              │
-│5. Prepare Publications LATEX, Markdown  │
+│4. Prepare Publications LATEX, Markdown  │
 └───────────────────┬─────────────────────┘
                     │
                     ▼
@@ -105,88 +123,95 @@ Motivation of this project. Problem statement.
 
 ```
 
-## Project Documentation
-
-| File | Description |
-|------|-------------|
-| [SPEC.md](./SPEC.md) | Component specifications, raw stand test data |
-| [CALC.md](./CALC.md) | Model derivation: math, pipeline, voltage scaling |
-| [VALIDATION.md](./VALIDATION.md) | Model validation against datasheet's and test bench results |
-| [README.md](./README.md) | Project overview, workflow, and documentation structure |
-| [METRICS.md](./METRICS.md) | Units and measurement standards |
-
 ## Project Directory Structure
 
 ```text
-├── README.md
+├── README.md 
 ├── CALC.md
 ├── SPEC.md
-├── VALIDATION.md 
-├── ltspice/ /* LTSpice simulation files */
+├── VALIDATION.md
+├── METRICS.md
+├── LICENSE
+├── ltspice/ /* muffler */
 ├── octave/ /* Octave scripts for calculations */
 ├── references/ /* Reference materials, datasheets, papers */
-├── src/ /* Source code */
-│   ├── model.c
-│   ├── model.h
-│   └── main.c
+├── src/ /* Source code */  
 ├── tests/ /* Test cases and validation scripts */
-│   ├── test_model.c
-│   └── test_data.csv
-├── build/ /* Build artifacts */
-│   ├── Makefile
-│   └── output.bin
+├── build(build_stm32)/ /* Build artifacts */
 ├── renode/ /* Renode simulation environment */
-│   ├── test_bench.resc
-│   └── model_dump.bin
 ├── docs/ /* Documentation */
-├── LICENSE
+├── logs/ /* Logs */
+├── assets/ /* Assets */
 ```
 
-## LTSpice Workflow
 
+## LTSpice Workflow
+> Now we have not LTSpice models, but in the future we will add them.
 - Schema and simulation setup in LTSpices.
 - Components, parameters.
 - Roadmap for starting simulations and extracting data.
 
 ## Octave Workflow
-
+> See all details in `CALC.md`
 - Workflow in Octave/Mathcad. 
 - Calculations to generate the LUT or building the mathematical model.
 - Export the data as a LUT or Dump to be used in the C-code and Renode.
 
 ## Code Workflow
 
-- C/C++ code environment, coding standards, MISRA validation.
-- Code structure, preparing the code to be compiled and run in Renode.
+1. **Import LUT:** Include `src/includes/sensor_lut.h` in `src/core/sensor.cpp`
+2. **Implement Algorithm:** in `src/core/sensor.cpp` both for POSIX and STM32 platforms
 
 ## Renode Workflow
 
-- Setting up the test bench in Renode.
-- Importing the model and running simulations.
-- Exporting results for next step of analysis.
+1. **Set up Environment:** `renode/test_run.resc` — define the test bench, load the model firmware, set up peripherals
+2. **Logs:** `./start.sh` — execute the renode command with logs parameters
+3. **Logs Output:** `./logs`
 
 ## Building
 
-- Build process, testing worst-cases scenarios, and test results.
-
-```bash
-make all
-```
+1. **Build:** `./start.sh` — Fully pipeline automation: builds the model firmware, runs Renode tests, exports logs, and generates validation reports.
+2. **Test:** `./start.sh` — Executes the Renode test bench, POSIX unit tests, and generates validation reports.
+3. **Test's Reports:**  in `./logs` as `logs/sensor_test_posix.log` and `logs/sensor_test_stm32.log`
 
 ## Validation Workflow, preparing results, describing the results.
 
-- Validation process.
-- Test cases, test bench setup, and test results.
-- Comparision of results with datasheets and stand test results.
-- Preparing derivations for TinyML Models.
-- Preparing the articles to publications.
+> See all details in `VALIDATION.md`
+
+```text
+[VERIFIED]| ### Potentiometer Sensor Tests
+[VERIFIED]| - PASS boundaries: 0 ADC -> 0 deg, 4096 ADC -> 355.0 deg
+[VERIFIED]| - PASS clamping: Out-of-bounds ADC handled correctly
+[VERIFIED]| - PASS midpoint: 2048 ADC -> 177.50 deg
+[VERIFIED]| - PASS monotonicity: Angle strictly increases with ADC
+[VERIFIED]| - PASS voltage: 2048 ADC -> 2.50V (V_REF=5.0V)
+
+--- TRACE DATA FOR OCTAVE ---
+[TRACE]| RAW_ADC; ANGLE_DEG; VOLTAGE_V
+[TRACE]| 0 ; 0.000000 ; 0.000000 
+[TRACE]| 409 ; 34.988586 ; 0.499268 
+[TRACE]| 819 ; 71.582321 ; 0.999756 
+[TRACE]| 1228 ; 105.912819 ; 1.499023 
+[TRACE]| 1638 ; 142.674454 ; 1.999512 
+[TRACE]| 2048 ; 177.500000 ; 2.500000 
+[TRACE]| 2457 ; 212.318878 ; 2.999268 
+[TRACE]| 2867 ; 249.082275 ; 3.499756 
+[TRACE]| 3276 ; 283.253021 ; 3.999023 
+[TRACE]| 3686 ; 320.014252 ; 4.499512 
+[TRACE]| 4096 ; 355.000000 ; 5.000000 
+
+--- TEST BENCH: FINISHED ---
+```
+
+![Dscrepancy Plot](./octave/plots/plot_errors.png)
 
 ## References
 
-- List of references, datasheets, papers.
-- Other materials used in this project.
-
+- List of references, datasheets, papers in `references/` directory.
 
 ## License
 
 This project is licensed under the MIT License. See [LICENSE](LICENSE)
+
+---
+*Document Version: v.0.3.0 | Part of LIGHT-MBSE-PIPELINE-SKELETON*
