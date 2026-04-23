@@ -1,0 +1,6 @@
+### Potentiometer Sensor Tests
+- PASS boundaries: 0 ADC -> 0 deg, 4096 ADC -> 355.0 deg
+- PASS clamping: Out-of-bounds ADC handled correctly
+- PASS midpoint: 2048 ADC -> 177.50 deg
+- PASS monotonicity: Angle strictly increases with ADC
+- PASS voltage: 2048 ADC -> 2.50V (V_REF=5.0V)

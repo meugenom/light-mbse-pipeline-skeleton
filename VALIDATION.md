@@ -1,23 +1,56 @@
 # Validation Protocol & Test Results
 
-## 1. Test Objectives
+**Generated on:** 2026-04-23 14:18:38
 
-- Validation of the c-code algorithm against the physical models defined in `SPEC.md` and `CALC.md`.
-- Simulation of the algorithm in Renode to verify timing and functional correctness under realistic conditions.
-- Comparison of the simulated results with the expected behavior derived from LTSpice and Octave models.
+## 1. HIL Test Summary (POSIX/STM32)
 
-## 2. Strict Pass/Fail Criteria
+ ### Potentiometer Properties
 
-- Pass Criteria.
-- Fail Criteria.
+| ID | Parameter | Value | Unit |
+|----|-----------|-------|------|
+| REQ-PHY-001 | V_REF | 5.0 | V |
+| REQ-PHY-002 | ANGLE_MAX | 355 | deg |
+| REQ-PHY-003 | ADC_RESOLUTION | 4096 | counts |
+| REQ-ALG-001 | SENSOR_TAB_SIZE | 101 | N/A |
 
-## 3. Emulation Results (Iteration vX.X)
 
-- Test cases.
+### Potentiometer Sensor Tests
+- PASS boundaries: 0 ADC -> 0 deg, 4096 ADC -> 355.0 deg
+- PASS clamping: Out-of-bounds ADC handled correctly
+- PASS midpoint: 2048 ADC -> 177.50 deg
+- PASS monotonicity: Angle strictly increases with ADC
+- PASS voltage: 2048 ADC -> 2.50V (V_REF=5.0V)
 
-## 4. Conclusion & Next Steps
 
-- Summary of validation results.
+## 2. Full Accuracy Data Trace
+
+| Turn Percentage | Angle Error % | Voltage Error % |
+|----------------|----------------|----------------|
+| 0.00 | 0.00 | 0.00|
+| 9.99 | -1.30 | 0.00|
+| 20.00 | 0.84 | 0.00|
+| 29.98 | -0.49 | -0.00|
+| 39.99 | 0.50 | 0.00|
+| 50.00 | 0.00 | 0.00|
+| 59.99 | -0.30 | 0.00|
+| 70.00 | 0.24 | 0.00|
+| 79.98 | -0.24 | -0.00|
+| 89.99 | 0.17 | 0.00|
+| 100.00 | 0.00 | 0.00|
+
 
 ---
-*Document Version: v.0.1.0 | Part of MBSE-PIPELINE-SKELETON*
+</br>
+
+## 3. Accuracy Analysis (Calculation vs Real Data)
+
+**Max Angle Error:** 0.84%
+
+**Max Voltage Error:** 0.00%
+
+
+![Discrepancy between real stand data and Theoretical Model](./octave/plots/plot_errors.png)
+
+
+---
+*Document Version: v.0.3.0 | Part of LIGHT-MBSE-PIPELINE-SKELETON*

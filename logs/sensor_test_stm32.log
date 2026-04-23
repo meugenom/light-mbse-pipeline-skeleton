@@ -1,0 +1,33 @@
+14:18:36.8567 [INFO] Including script(s): /Users/meinemandala/src/github.com/light-mbse-pipeline-skeleton/renode/test_run.resc
+14:18:36.9042 [INFO] System bus created.
+14:18:37.3595 [WARNING] Translation cache size 536870912 is larger than maximum allowed 134217728. It will be clamped to maximum
+14:18:37.5240 [INFO] sysbus: Loaded SVD: /var/folders/lz/f8vjckzs47j2dl1d12dv66fh0000gn/T/renode-45119/610e2e19-4370-4295-a0e6-50c132e4e56f.tmp. Name: STM32F40x. Description: STM32F40x.
+14:18:37.5401 [INFO] sysbus: Loading block of 46620 bytes length at 0x8000000.
+14:18:37.5443 [INFO] sysbus: Loading block of 3524 bytes length at 0x800B61C.
+14:18:37.7247 [INFO] cpu: Setting initial values: PC = 0x800065F, SP = 0x20020000.
+14:18:37.7254 [INFO] STM32F4: Machine started.
+14:18:37.7413 [INFO] usart2: [host: 0,21s (+0,21s)|virt: 0,1ms (+0,1ms)] 
+14:18:37.7415 [INFO] usart2: [host: 0,21s (+0,57ms)|virt:    0,1ms (+0s)] [VERIFIED]| ### POTENTIOMETER STM32 TEST BENCH
+14:18:37.7424 [INFO] usart2: [host: 0,21s (+0,89ms)|virt:    0,1ms (+0s)] [VERIFIED]| - PASS boundaries
+14:18:37.7425 [INFO] usart2: [host: 0,21s (+0,14ms)|virt:    0,1ms (+0s)] [VERIFIED]| - PASS clamping
+14:18:37.7426 [INFO] usart2: [host: 0,21s (+0,12ms)|virt:    0,1ms (+0s)] [VERIFIED]| - PASS midpoint
+14:18:37.7428 [INFO] usart2: [host: 0,21s (+0,22ms)|virt: 0,2ms (+0,1ms)] [VERIFIED]| - PASS monotonicity
+14:18:37.7430 [INFO] usart2: [host: 0,21s (+0,19ms)|virt: 0,3ms (+0,1ms)] [VERIFIED]| - PASS voltage logic
+14:18:37.7430 [INFO] usart2: [host:   0,21s (+42µs)|virt:    0,3ms (+0s)] 
+14:18:37.7432 [INFO] usart2: [host:   0,21s (+94µs)|virt:    0,3ms (+0s)] --- TRACE DATA FOR OCTAVE ---
+14:18:37.7433 [INFO] usart2: [host: 0,21s (+0,13ms)|virt:    0,3ms (+0s)] [TRACE]| RAW_ADC; ANGLE_DEG; VOLTAGE_V
+14:18:37.7437 [INFO] usart2: [host: 0,21s (+0,41ms)|virt:    0,3ms (+0s)] [TRACE]| 0 ; 0.000000 ; 0.000000 
+14:18:37.7446 [INFO] usart2: [host: 0,21s (+0,91ms)|virt: 0,4ms (+0,1ms)] [TRACE]| 409 ; 34.988586 ; 0.499268 
+14:18:37.7449 [INFO] usart2: [host: 0,21s (+0,25ms)|virt: 0,5ms (+0,1ms)] [TRACE]| 819 ; 71.582321 ; 0.999756 
+14:18:37.7451 [INFO] usart2: [host: 0,21s (+0,25ms)|virt: 0,6ms (+0,1ms)] [TRACE]| 1228 ; 105.912819 ; 1.499023 
+14:18:37.7453 [INFO] usart2: [host: 0,21s (+0,21ms)|virt: 0,7ms (+0,1ms)] [TRACE]| 1638 ; 142.674454 ; 1.999512 
+14:18:37.7456 [INFO] usart2: [host: 0,21s (+0,26ms)|virt: 0,8ms (+0,1ms)] [TRACE]| 2048 ; 177.500000 ; 2.500000 
+14:18:37.7458 [INFO] usart2: [host: 0,21s (+0,21ms)|virt: 0,9ms (+0,1ms)] [TRACE]| 2457 ; 212.318878 ; 2.999268 
+14:18:37.7460 [INFO] usart2: [host: 0,21s (+0,22ms)|virt:   1ms (+0,1ms)] [TRACE]| 2867 ; 249.082275 ; 3.499756 
+14:18:37.7462 [INFO] usart2: [host: 0,21s (+0,21ms)|virt: 1,1ms (+0,1ms)] [TRACE]| 3276 ; 283.253021 ; 3.999023 
+14:18:37.7465 [INFO] usart2: [host: 0,21s (+0,24ms)|virt: 1,2ms (+0,1ms)] [TRACE]| 3686 ; 320.014252 ; 4.499512 
+14:18:37.7467 [INFO] usart2: [host: 0,21s (+0,26ms)|virt: 1,3ms (+0,1ms)] [TRACE]| 4096 ; 355.000000 ; 5.000000 
+14:18:37.7467 [INFO] usart2: [host:   0,21s (+32µs)|virt:    1,3ms (+0s)] 
+14:18:37.7469 [INFO] usart2: [host:  0,21s (+0,1ms)|virt:    1,3ms (+0s)] [RESULT]| Sensor tests finished.
+14:18:37.9298 [INFO] STM32F4: Machine paused.
+14:18:37.9453 [INFO] STM32F4: Disposed.
