@@ -17,9 +17,9 @@
 
 | Version | Status | Pipeline Engine | Focus |
 | ------- | ------ | --------------- | ----- |
-| Research | Closed | SKELETON v.0.1.0 | MBSE-PIPELINE-SKELETON description |
-| Base Version | Closed | SKELETON v.0.2.0 | MBSE-PIPELINE-SKELETON  worked example |
-| Extensions | Planned | SKELETON v.0.3.0 | MBSE-PIPELINE-SKELETON  extensions |
+| Research | Closed | SKELETON v.0.1.0 | MBSE-PIPELINE-SKELETON |
+| Base Version | Closed | SKELETON v.0.2.0 | MBSE-PIPELINE-SKELETON |
+| Worked Example | Current | SKELETON v.0.3.0 | MBSE-PIPELINE-SKELETON |
 
 
 ## Table of Contents
@@ -54,12 +54,13 @@ Scripts and tests in this project can be reproduced with the following tools:
 
 | Tool | Version | Purpose |
 | ------ | --------- | --------- |
-| **GNU Octave** | 11.1.0 | Mathematical modeling, generation LUT, Reports|
-| **GCC Clang** | 21.0.0 | Runtime model implementation |
-| **GCC arm-none-eabi-gcc** | 15.2.rel1 | Bare-metal target compilation|
+| **GNU Octave** | 11.1.0 | Mathematical modeling, generation LUT, Reports |
+| **Clang** | 21.0.0 | Runtime model implementation (POSIX) |
+| **arm-none-eabi-gcc**| 15.2.rel1 | Bare-metal target compilation (STM32) |
 | **Renode** | 1.16.1.16858 | Instruction-accurate hardware emulation |
 | **CMake** | 4.3.1 | Build system management |
-| **Bash** | 5.3.9(1) | Scripting and automation |
+| **Bash** | 5.3.9 | Pipeline scripting and orchestration |
+
 
 ## Project Documentation
 
