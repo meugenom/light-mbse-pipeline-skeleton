@@ -175,6 +175,15 @@ Scripts and tests in this project can be reproduced with the following tools:
 2. **Test:** `./start.sh` — Executes the Renode test bench, POSIX unit tests, and generates validation reports.
 3. **Test's Reports:**  in `./logs` as `logs/sensor_test_posix.log` and `logs/sensor_test_stm32.log`
 
+**Robust Orchestration:**
+> The pipeline is driven by a fail-safe bash orchestrator (start.sh with strict set -euo pipefail). It automatically handles:
+- Toolchain dependency checks
+- Generation and verification of intermediate artifacts (LUT headers)
+- Cross-platform builds (POSIX vs STM32) using CMake
+- Asynchronous execution and UART log extraction from Renode
+- On-the-fly parsing of validation traces into CSV formats
+
+
 ## Validation Workflow, preparing results, describing the results.
 
 > See all details in `VALIDATION.md`
