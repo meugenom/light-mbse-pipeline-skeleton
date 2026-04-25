@@ -1,15 +1,15 @@
 > **Why this Skeleton?**
-> In traditional embedded development, is often  a **"Valley of Death"** between hardware design and software implementation. Hardware engineers provide datasheets and LTSpice models, but software engineers write C-code based on idealized assumptions. And by result the system fails due to jitter, noise or thermal drift.
+> In traditional embedded development, there is often  a **"Valley of Death"** between hardware design and software implementation. While hardware engineers provide datasheets and LTSpice models, software engineers write C code based on idealised assumptions. Consequently, the system often fails due to jitter, noise or thermal drift.
 
->This **skeleton** is designed to bridge that gap and provides a structured workflow for modeling, simulation, and validation. Your can use it as a template. This is a version 0.1.0 and will be improved in the future.
+>This **skeleton** is designed to bridge the gap by providing a structured workflow for modelling, simulation, and validation. Your can use it as a template. This is a version 0.3.0, which will be improved in the future.
 
 
 # LIGHT-MBSE-PIPELINE-SKELETON 
 
-> For example to pipeline the modeling and validation of a Potentiometer.
+> For example we could be used to automate the modeling and validation of a potentiometer.
 
 1. **Methodology & Approach:**
-- LIGHT-MBSE-PIPELINE-SKELETON is designed to be a roadmap for modeling and valisating a some component, for example a temperature sensor.
+- LIGHT-MBSE-PIPELINE-SKELETON is designed to provide a roadmap for modelling and validating a component, such as a potentiometer.
 2. **Setup:** 
 - Datasheets Potentiometer `references/Potentiometer-Properties.csv` and `references/Potentiometer-Data.csv`.
 
@@ -17,9 +17,9 @@
 
 | Version | Status | Pipeline Engine | Focus |
 | ------- | ------ | --------------- | ----- |
-| Research | Closed | SKELETON v.0.1.0 | MBSE-PIPELINE-SKELETON |
-| Base Version | Closed | SKELETON v.0.2.0 | MBSE-PIPELINE-SKELETON |
-| Worked Example | Current | SKELETON v.0.3.0 | MBSE-PIPELINE-SKELETON |
+| Research | Closed | SKELETON v.0.1.0 | Description of initial finding |
+| Base Version | Closed | SKELETON v.0.2.0 | Initial version formatting |
+| Worked Example | Current | SKELETON v.0.3.0 | Addition of Feature |
 
 
 ## Table of Contents
@@ -42,35 +42,35 @@
 
 ## Motivation
 
-I built a C++ motor model from stand test data. The model works — in the hover-cruise range (20–60% throttle) average error is 5.5% by thrust, 3.8% by current. But I had no way to reproduce the result from scratch in a reasonable time. If I lost intermediate files — no way to know where anything came from. If I changed the motor — everything needed to be redone manually.
-The idea was simple: every artifact should be automatically generated from a single source of truth.
-So I redesigned the structure and implemented it as a `LIGHT-MBSE-PIPELINE-SKELETON` - a lightweight, reproducible pipeline for embedded modeling. It's not a full toolchain, not a code, only text, but structured as workflow. The idea is to have some roadmap to automate the entire process from raw data to validated model, ensuring that every artifact is traceable and reproducible.
+I created a C++ motor model using stand test data. The model works — in the hover-cruise range (20–60% throttle), the average error is 5.5% for thrust, 3.8% for current. However, I had no way to reproducing the result from scratch in a reasonable amount time. If I lost the intermediate files, where would be no way to knowing where anything came from. If I changed the motor, everything would need to be redone manually.
+The idea was simple: **every artefact should be automatically generated from a single source of truth.**
+I redesigned the structure and implemented it as a `LIGHT-MBSE-PIPELINE-SKELETON` - a lightweight, reproducible pipeline for embedded modelling. It's not a complete toolchain or code, it's just  text, but it's structured as workflow. The idea is to provide a roadmap to automating the entire process from raw data to validated model, ensuring that every artefact is traceable and reproducible.
 
 
 ## Environment & Toolchain (Reproducibility)
 
 **Used System:** macOS Tahoe 26.4.1 on Apple Silicon
-Scripts and tests in this project can be reproduced with the following tools:
+The following tools can be used to reproduce the scripts and tests in this project.
 
 | Tool | Version | Purpose |
 | ------ | --------- | --------- |
-| **GNU Octave** | 11.1.0 | Mathematical modeling, generation LUT, Reports |
-| **Clang** | 21.0.0 | Runtime model implementation (POSIX) |
-| **arm-none-eabi-gcc**| 15.2.rel1 | Bare-metal target compilation (STM32) |
-| **Renode** | 1.16.1.16858 | Instruction-accurate hardware emulation |
-| **CMake** | 4.3.1 | Build system management |
-| **Bash** | 5.3.9 | Pipeline scripting and orchestration |
+| **GNU Octave** | 11.1.0 | mathematical modelling, generation a look-up tables (LUT), reports |
+| **Clang** | 21.0.0 | runtime model implementation (POSIX) |
+| **arm-none-eabi-gcc**| 15.2.rel1 | bare-metal target compilation (STM32) |
+| **Renode** | 1.16.1.16858 | instruction-accurate hardware emulation |
+| **CMake** | 4.3.1 | build system management |
+| **Bash** | 5.3.9 | pipeline scripting and orchestration |
 
 
 ## Project Documentation
 
 | File | Description |
 |------|-------------|
-| [FULL SPECIFICATION](./SPEC.md) | Component specifications, raw stand test data |
-| [CALCULATION DETAILS](./CALC.md) | Model derivation: math, pipeline, voltage scaling |
-| [VALIDATION REPORT](./VALIDATION.md) | Validation results and performance metrics |
-| [METRICS.md](./METRICS.md) | Units and measurement standards |
-| [README.md](./README.md) | Project overview, workflow, and documentation structure |
+| [FULL SPECIFICATION](./SPEC.md) | component specifications, raw stand test data |
+| [CALCULATION DETAILS](./CALC.md) | model derivation: math, pipeline, voltage scaling |
+| [VALIDATION REPORT](./VALIDATION.md) | validation results and performance metrics |
+| [METRICS.md](./METRICS.md) | units and measurement standards |
+| [README.md](./README.md) | project overview, workflow, and documentation structure |
 
 ## Pipeline Overview
 
@@ -147,9 +147,9 @@ Scripts and tests in this project can be reproduced with the following tools:
 
 
 ## LTSpice Workflow
-> Now we have not LTSpice models, but in the future we will add them.
+> We don't have LTSpice models now, but we will add them in the future.
 - Schema and simulation setup in LTSpices.
-- Components, parameters.
+- Components and parameters.
 - Roadmap for starting simulations and extracting data.
 
 ## Octave Workflow
@@ -171,8 +171,8 @@ Scripts and tests in this project can be reproduced with the following tools:
 
 ## Building
 
-1. **Build:** `./start.sh` — Fully pipeline automation: builds the model firmware, runs Renode tests, exports logs, and generates validation reports.
-2. **Test:** `./start.sh` — Executes the Renode test bench, POSIX unit tests, and generates validation reports.
+1. **Build:** `./start.sh` — fully pipeline automation: builds the model firmware, runs Renode tests, exports logs, and generates validation reports.
+2. **Test:** `./start.sh` — executes the Renode test bench, POSIX unit tests, and generates validation reports.
 3. **Test's Reports:**  in `./logs` as `logs/sensor_test_posix.log` and `logs/sensor_test_stm32.log`
 
 **Robust Orchestration:**
